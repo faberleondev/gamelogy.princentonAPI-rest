@@ -8,6 +8,4 @@ public class PrincentonApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PrincentonApplication.class, args);
-	}
-
-}
+	}}
