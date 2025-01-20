@@ -10,5 +10,7 @@ public enum Especialidad {
     urologia,
     nefrologia,
     cardiologia,
-    gerontologia
+    gerontologia,
+    psiquiatria,
+    generalista
 }

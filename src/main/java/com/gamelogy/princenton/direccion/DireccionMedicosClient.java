@@ -1,4 +1,15 @@
 package com.gamelogy.princenton.direccion;
 
-public record DireccionMedicosClient(String calle, String numero, String dpto, String barrio, String ciudad) {
+import jakarta.validation.constraints.NotBlank;
+
+public record DireccionMedicosClient(@NotBlank
+                                     String calle,
+                                     @NotBlank
+                                     String numero,
+                                     @NotBlank
+                                     String dpto,
+                                     @NotBlank
+                                     String barrio,
+                                     @NotBlank
+                                     String ciudad) {
 }
