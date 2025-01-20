@@ -23,18 +23,18 @@ public class MedicoController {
     @PostMapping
     public ResponseEntity<DatosRespuestaMedico> registrarMedico(@RequestBody @Valid RegistroMedicoClient registroMedicoClient,
                                           UriComponentsBuilder uriComponentsBuilder){
-        Medicos medicos = medicosRepository.save(new Medicos(registroMedicoClient));
+        Medico medico = medicosRepository.save(new Medico(registroMedicoClient));
         DatosRespuestaMedico datosRespuestaMedico = new DatosRespuestaMedico(
-                medicos.getId(),
-                medicos.getNombre(),
-                medicos.getEspecialidad().toString(),
-                medicos.getMatricula());
+                medico.getId(),
+                medico.getNombre(),
+                medico.getEspecialidad().toString(),
+                medico.getMatricula());
         System.out.println("Datos cargados correctamente");
         // RETURN 201 Creado
 
         // URL donde encontrar al medico
         //        URI urlLocalHostMedicoCreado = URI.create("http://localhost:8080/medicos/" + medicos.getId());
-        URI urlMedicoCreado = uriComponentsBuilder.path("/medicos/{id}").buildAndExpand(medicos.getId()).toUri();
+        URI urlMedicoCreado = uriComponentsBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
         return ResponseEntity.created(urlMedicoCreado).body(datosRespuestaMedico);
 
         }
@@ -50,21 +50,21 @@ public class MedicoController {
     @PutMapping
     @Transactional
     public ResponseEntity actualizarMedico(@RequestBody @Valid DatosActualizarMedico datosActualizarMedico){
-        Medicos medicos = medicosRepository.getReferenceById(datosActualizarMedico.id());
-        medicos.actualizardatos(datosActualizarMedico);
+        Medico medico = medicosRepository.getReferenceById(datosActualizarMedico.id());
+        medico.actualizardatos(datosActualizarMedico);
         return ResponseEntity.ok(new DatosRespuestaMedico(
-                                medicos.getId(),
-                                medicos.getNombre(),
-                                medicos.getEspecialidad().toString(),
-                                medicos.getMatricula()));
+                                medico.getId(),
+                                medico.getNombre(),
+                                medico.getEspecialidad().toString(),
+                                medico.getMatricula()));
     }
 
     // DELETE LOGICO
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity desactivarMedico(@PathVariable Long id){
-        Medicos medicos = medicosRepository.getReferenceById(id);
-        medicos.desactivarMedico();
+        Medico medico = medicosRepository.getReferenceById(id);
+        medico.desactivarMedico();
         return ResponseEntity.noContent().build();
     }
 //      DELETE EN DB
@@ -75,12 +75,12 @@ public class MedicoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<DatosRespuestaMedico> retornarMedicoEspecifico(@PathVariable Long id){
-        Medicos medicos = medicosRepository.getReferenceById(id);
+        Medico medico = medicosRepository.getReferenceById(id);
         var datosMedico = new DatosRespuestaMedico(
-                medicos.getId(),
-                medicos.getNombre(),
-                medicos.getEspecialidad().toString(),
-                medicos.getMatricula());
+                medico.getId(),
+                medico.getNombre(),
+                medico.getEspecialidad().toString(),
+                medico.getMatricula());
         return ResponseEntity.ok(datosMedico);
     }
 }

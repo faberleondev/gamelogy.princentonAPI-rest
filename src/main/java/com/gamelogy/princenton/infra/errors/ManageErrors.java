@@ -1,7 +1,8 @@
-package com.gamelogy.princenton.infra;
+package com.gamelogy.princenton.infra.errors;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,6 +21,12 @@ public class ManageErrors {
     public ResponseEntity error400PayloadIncorrecto(MethodArgumentNotValidException e) {
         var errores = e.getFieldErrors().stream()
                 .map(DatosErrorValidacion::new).toList();
+        return ResponseEntity.badRequest().body(errores);
+    }
+
+    @ExceptionHandler(InternalAuthenticationServiceException.class)
+    public ResponseEntity error403Forbidden(InternalAuthenticationServiceException e) {
+        var errores = e.getCause().getMessage();
         return ResponseEntity.badRequest().body(errores);
     }
 

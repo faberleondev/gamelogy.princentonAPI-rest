@@ -7,7 +7,7 @@ public record DatosListadoMedico(
         String especialidad,
         String email
 ) {
-    public DatosListadoMedico(Medicos medicos) {
-        this(medicos.getId(),medicos.getNombre(), medicos.getMatricula(), medicos.getEspecialidad().toString(), medicos.getEmail());
+    public DatosListadoMedico(Medico medico) {
+        this(medico.getId(), medico.getNombre(), medico.getMatricula(), medico.getEspecialidad().toString(), medico.getEmail());
     }
 }
