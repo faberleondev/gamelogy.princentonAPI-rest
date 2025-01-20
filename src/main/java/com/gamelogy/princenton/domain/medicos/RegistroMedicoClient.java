@@ -7,23 +7,24 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-public record RegistroMedicoClient(@NotBlank
+public record RegistroMedicoClient(@NotBlank(message = "{nombre.obligatorio}")
                                    String nombre,
-                                   @NotBlank
-                                   @Email
+                                   @NotBlank(message = "{email.obligatorio}")
+                                   @Email(message = "{email.invalido}")
                                    String email,
-                                   @NotBlank
+                                   @NotBlank(message = "{telefono.obligatorio}")
                                    @Pattern(regexp = "\\d{8,20}")
                                    String telefono,
-                                   @NotBlank
+                                   @NotBlank(message = "La matrícula es obligatorio")
                                    @Pattern(regexp = "\\d{4,8}")
                                    String matricula,
                                    @NotBlank
                                    @Pattern(regexp = "\\d{6,10}")
                                    String documento,
-                                   @NotNull
+                                   @NotNull(message = "{especialidad.obligatorio}")
                                    Especialidad especialidad,
-                                   @NotNull @Valid
+                                   @NotNull(message = "{direccion.obligatorio}")
+                                   @Valid
                                    DireccionMedicosClient direccion) {
 
 }
