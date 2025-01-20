@@ -1,8 +1,8 @@
 // ENTIDAD JPA!!!!
 
-package com.gamelogy.princenton.medicos;
+package com.gamelogy.princenton.domain.medicos;
 
-import com.gamelogy.princenton.direccion.Direccion;
+import com.gamelogy.princenton.domain.direccion.Direccion;
 import jakarta.persistence.*;
 import lombok.*;
 

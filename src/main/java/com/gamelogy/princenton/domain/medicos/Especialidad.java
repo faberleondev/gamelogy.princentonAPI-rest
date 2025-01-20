@@ -1,4 +1,4 @@
-package com.gamelogy.princenton.medicos;
+package com.gamelogy.princenton.domain.medicos;
 
 public enum Especialidad {
     dermatologia,

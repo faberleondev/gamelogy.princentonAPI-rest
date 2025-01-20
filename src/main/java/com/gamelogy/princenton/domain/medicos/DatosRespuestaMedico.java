@@ -1,6 +1,4 @@
-package com.gamelogy.princenton.medicos;
-
-import com.gamelogy.princenton.direccion.DireccionMedicosClient;
+package com.gamelogy.princenton.domain.medicos;
 
 public record DatosRespuestaMedico(
         Long id,

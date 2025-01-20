@@ -1,4 +1,4 @@
-package com.gamelogy.princenton.direccion;
+package com.gamelogy.princenton.domain.direccion;
 
 import jakarta.validation.constraints.NotBlank;
 
