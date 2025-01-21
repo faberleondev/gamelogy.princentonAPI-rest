@@ -1,0 +1,1 @@
+alter table medico add matricula varchar(10) not null;
